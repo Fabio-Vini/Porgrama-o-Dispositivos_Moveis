@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TarefasApp.MainPage"
+             Title="Tarefas">
+
+    <Grid RowDefinitions="Auto,Auto,*"
+          Padding="20"
+          RowSpacing="20">
+
+        
+        <VerticalStackLayout Grid.Row="0"
+                             Spacing="5">
+
+            <Label Text="Minhas Tarefas"
+                   FontSize="28"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Organize e acompanhe suas tarefas"
+                   FontSize="14"
+                   Opacity="0.7"/>
+
+        </VerticalStackLayout>
+
+
+       
+        <Border Grid.Row="1"
+                Padding="15"
+                StrokeThickness="1">
+
+            <VerticalStackLayout Spacing="10">
+
+                <Label Text="Gerenciar tarefas"
+                       FontAttributes="Bold"
+                       FontSize="16"/>
+
+                <Button Text="+ Adicionar nova tarefa"
+                        Clicked="Adicionar_Clicked"/>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+
+        
+        <Border Grid.Row="2"
+                Padding="15"
+                StrokeThickness="1">
+
+            <Grid RowDefinitions="Auto,*"
+                  RowSpacing="10">
+
+                <Label Grid.Row="0"
+                       Text="Lista de tarefas"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+
+                <CollectionView Grid.Row="1"
+                                x:Name="ListaTarefasView"
+                                SelectionMode="Single"
+                                SelectionChanged="ListaTarefasView_SelectionChanged">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border Padding="15"
+                                    Margin="0,5"
+                                    StrokeThickness="1">
+
+                                <Grid RowDefinitions="Auto,Auto"
+                                      RowSpacing="5">
+
+                                    <Label Grid.Row="0"
+                                           Text="{Binding Titulo}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"/>
+
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Descricao}"
+                                           FontSize="14"
+                                           Opacity="0.7"/>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
+</ContentPage>
